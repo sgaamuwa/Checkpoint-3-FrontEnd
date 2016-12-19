@@ -19,7 +19,7 @@ var BucketlistService = (function () {
     function BucketlistService(_http) {
         this._http = _http;
         this.token = window.localStorage.getItem('auth_token');
-        this.actionUrl = "http://127.0.0.1:8000/api/";
+        this.actionUrl = "https://ebyokola.herokuapp.com/api/";
         this.headers = new http_1.Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Authorization', 'Token ' + this.token);

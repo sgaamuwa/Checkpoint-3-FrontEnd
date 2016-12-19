@@ -15,7 +15,7 @@ export class BucketlistService {
     private token = window.localStorage.getItem('auth_token');
 
     constructor(private _http: Http){
-        this.actionUrl = "http://127.0.0.1:8000/api/";
+        this.actionUrl = "https://ebyokola.herokuapp.com/api/";
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Authorization', 'Token ' + this.token);

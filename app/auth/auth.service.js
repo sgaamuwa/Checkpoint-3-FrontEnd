@@ -21,7 +21,7 @@ var AuthService = (function () {
         this._http = _http;
         this._router = _router;
         this.loggedIn = false;
-        this.actionUrl = "http://127.0.0.1:8000/api/auth/";
+        this.actionUrl = "https://ebyokola.herokuapp.com/api/auth/";
         this.headers = new http_1.Headers();
         this.headers.append('Content-Type', 'application/json');
         this.loggedIn = !!window.localStorage.getItem('auth_token');
