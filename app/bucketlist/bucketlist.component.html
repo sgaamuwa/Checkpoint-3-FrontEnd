@@ -25,8 +25,8 @@
                 <div class="panel-body">
                     <ul class="list-group" *ngIf="bucketlists && bucketlists.length">
                         <li class="list-group-item" *ngFor="let bucketlist of bucketlists">
-                            <div class="bucketlist" [routerLink]="['/bucketlists', bucketlist.id]">
-                                <div >{{bucketlist.name}}</div>
+                            <div class="bucketlist">
+                                <div ><a href="javascript:void(0)" [routerLink]="['/bucketlists', bucketlist.id]">{{bucketlist.name}}</a></div>
                             </div>
                             <div class="pull-right action-buttons">
                                 <a href="javascript:void(0)" (click)="deleteBucketlist(bucketlist.id)" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
