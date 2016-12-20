@@ -29,8 +29,10 @@ export class AuthComponent {
                     this._router.navigate(['/bucketlists']);
                 };
             },
-            error => this.errorMessage = <any>error,
-            () => this.resetValues());
+            error => {
+                this.resetValues();
+                this.errorMessage = <any>error;
+            });
     }
 
     registerUser(): void {
@@ -44,8 +46,7 @@ export class AuthComponent {
                     this._router.navigate(['/auth']);
                 };
             },
-            error => this.errorMessage = <any>error,
-            () => this.resetValues());
+            error => this.errorMessage = <any>error);
     }
 
     onRegister(): void {

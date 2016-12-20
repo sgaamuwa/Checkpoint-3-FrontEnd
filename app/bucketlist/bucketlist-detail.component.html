@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="col-sm-12">
+    <div class="col-sm-12 col-md-9">
         <div class="bs-calltoaction bs-calltoaction-info">
             <div class="row" *ngIf="bucketlist">
                 <div class="col-md-9 cta-contents">
@@ -8,11 +8,11 @@
                     <input type="text" class="form-control" [(ngModel)]="bucketlistName" *ngIf="edit">
                     <div class="cta-desc" >
                         <div class="row">
-                            <div class="col-md-2">Date Created: </div>
+                            <div class="col-md-2">Created: </div>
                             <div class="col-md-6">{{bucketlist.date_created}}</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">Date Modified: </div>
+                            <div class="col-md-2">Modified: </div>
                             <div class="col-md-6">{{bucketlist.date_modified}}</div>
                         </div>
                     </div>
@@ -28,18 +28,24 @@
         </div>
     </div>
 </div>
+<br>
+<div class="row">
+    <div class="col-md-9"><input type="text" class="form-control" [(ngModel)]="newItem" ></div>
+    <div class="col-md-3"><button class="btn btn-primary" (click)='createItem(bucketlist.id)'> Create Item </button></div> 
+    <div *ngIf="createItemError" class="text-danger">{{createItemError.name[0]}}</div>
+</div><br>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
             <div class="row">
-                <div class="panel panel-info">
+                <div class="panel panel-primary">
                     <div class="panel-heading" style="display: in-line">
                         Items
-                        <div class="pull-right">
+                        <!--<div class="pull-right">
                             <div *ngIf="createItemError" class="text-danger">{{createItemError.name[0]}}</div>
                             <input type="text" [(ngModel)]="newItem"> 
                             <button class="btn btn-primary" (click)='createItem(bucketlist.id)'>Create Item</button>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="panel-body">
                         <div *ngIf="bucketlist && bucketlist.items.length > 0">  

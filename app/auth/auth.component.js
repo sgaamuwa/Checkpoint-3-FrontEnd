@@ -25,7 +25,10 @@ var AuthComponent = (function () {
                 _this._router.navigate(['/bucketlists']);
             }
             ;
-        }, function (error) { return _this.errorMessage = error; }, function () { return _this.resetValues(); });
+        }, function (error) {
+            _this.resetValues();
+            _this.errorMessage = error;
+        });
     };
     AuthComponent.prototype.registerUser = function () {
         var _this = this;
@@ -38,7 +41,7 @@ var AuthComponent = (function () {
                 _this._router.navigate(['/auth']);
             }
             ;
-        }, function (error) { return _this.errorMessage = error; }, function () { return _this.resetValues(); });
+        }, function (error) { return _this.errorMessage = error; });
     };
     AuthComponent.prototype.onRegister = function () {
         this.login = false;

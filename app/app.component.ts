@@ -9,7 +9,7 @@ import { AuthService } from './auth/auth.service';
 	styleUrls: ["app.component.css"]
 })
 
-export class AppComponent{
+export class AppComponent {
 	public description: string = "Ebyokola"
 
 	constructor(private _authService: AuthService){

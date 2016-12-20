@@ -1,7 +1,7 @@
  <div class="media">                          
     <div class="media-body">
         <div class="col-lg-7 padding-left-0">
-            <h4 class="media-heading" *ngIf="!edit">{{item.name}} <span *ngIf="item.done"><i class="text-success glyphicon glyphicon-ok"></i></span><span *ngIf="!item.done"><i class="text-success glyphicon glyphicon-remove"></i></span></h4>
+            <h4 class="media-heading" *ngIf="!edit">{{item.name}} <span *ngIf="item.done"><i class="text-success glyphicon glyphicon-ok"></i></span><span *ngIf="!item.done"><i class="text-danger glyphicon glyphicon-remove"></i></span></h4>
             <div *ngIf="edit">
                 <form class="form-inline">
                     <div class="form-group">
