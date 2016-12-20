@@ -32,8 +32,11 @@
 <div class="row">
     <div class="col-md-9"><input type="text" class="form-control" [(ngModel)]="newItem" ></div>
     <div class="col-md-3"><button class="btn btn-primary" (click)='createItem(bucketlist.id)'> Create Item </button></div> 
-    <div *ngIf="createItemError" class="text-danger">{{createItemError.name[0]}}</div>
-</div><br>
+</div>
+<div class="row">
+    <div *ngIf="createItemError" class="alert alert-danger">{{createItemError.name[0]}}</div>
+</div>
+<br>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">

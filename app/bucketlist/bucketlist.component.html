@@ -24,12 +24,34 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-group" *ngIf="bucketlists && bucketlists.length">
-                        <li class="list-group-item" *ngFor="let bucketlist of bucketlists">
+                        <li class="list-group-item" *ngFor="let bucketlist of bucketlists; let i = index">
                             <div class="bucketlist">
                                 <div ><a href="javascript:void(0)" [routerLink]="['/bucketlists', bucketlist.id]">{{bucketlist.name}}</a></div>
                             </div>
                             <div class="pull-right action-buttons">
-                                <a href="javascript:void(0)" (click)="deleteBucketlist(bucketlist.id)" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="javascript:void(0)" data-toggle="modal" [attr.data-target]="'#DeleteModal' + i" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                            <!-- Modal -->
+                            <div class = "modal fade" [id] = "'DeleteModal' + i" tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true"> 
+                                <div class = "modal-dialog">
+                                    <div class = "modal-content"> 
+                                        <div class = "modal-header">
+                                            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                                                &times;
+                                            </button>
+                                            <h4 class = "modal-title" id = "myModalLabel">
+                                            Delete Bucketlist
+                                            </h4>
+                                        </div>
+                                        <div class = "modal-body">
+                                            Are you sure you want to delete {{bucketlist.name}}??
+                                        </div>
+                                        <div class = "modal-footer">
+                                            <button type = "button" class = "btn btn-danger" (click)="deleteBucketlist(bucketlist.id)" data-dismiss = "modal">Yes</button>
+                                            <button type = "button" class = "btn btn-success" data-dismiss = "modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </li>
                     </ul>
