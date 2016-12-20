@@ -7,11 +7,8 @@
         "node": "7.0.0"
     },
     "scripts": {
-        "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-        "tsc": "tsc",
-        "tsc:w": "tsc -w",
+        "start": "http-server",
         "lint": "tslint ./app/**/*.ts -t verbose",
-        "lite": "lite-server",
         "typings": "typings",
         "preinstall": "npm install -g http-server",
         "postinstall": "typings install"
