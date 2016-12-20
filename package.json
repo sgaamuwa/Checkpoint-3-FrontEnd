@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "author": "Samuel Gaamuwa",
     "description": "Bucketlist Application for Andela Checkpoint 3",
+    "engines": {
+        "node": "7.0.0"
+    },
     "scripts": {
         "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
         "tsc": "tsc",
@@ -10,6 +13,7 @@
         "lint": "tslint ./app/**/*.ts -t verbose",
         "lite": "lite-server",
         "typings": "typings",
+        "preinstall": "npm install -g http-server",
         "postinstall": "typings install"
     },
     "license": "ISC",
@@ -29,14 +33,15 @@
         "systemjs": "0.19.27",
         "zone.js": "^0.6.23",
         
-        "bootstrap": "^3.3.6"
-    },
-    "devDependencies": {
-        "concurrently": "^2.2.0",
-        "lite-server": "^2.2.0",
+        "bootstrap": "^3.3.6",
         "tslint": "^3.7.4",
         "typescript": "^2.0.2",
         "typings": "^1.0.4"
+    },
+    "devDependencies": {
+        "concurrently": "^2.2.0",
+        "lite-server": "^2.2.0"
+        
     },
     "repository": {}
 }
