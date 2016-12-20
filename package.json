@@ -7,12 +7,13 @@
         "node": "7.0.0"
     },
     "scripts": {
-        "start": "tsc && node server.js",
+        "start": "http-server",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
         "lint": "tslint ./app/**/*.ts -t verbose",
         "lite": "lite-server",
         "typings": "typings",
+        "preinstall": "npm install -g http-server",
         "postinstall": "typings install"
     },
     "license": "ISC",
