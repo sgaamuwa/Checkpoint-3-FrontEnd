@@ -34,10 +34,9 @@ var AuthComponent = (function () {
         var _this = this;
         this._authService.registerUser(this.username, this.password).subscribe(function (result) {
             if (result) {
+                _this.resetValues();
                 _this.welcomeMessage = "Welcome " + result + "!, Login to continue";
                 _this.login = true;
-                _this.username = null;
-                _this.password = null;
                 _this._router.navigate(['/auth']);
             }
             ;

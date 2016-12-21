@@ -39,10 +39,9 @@ export class AuthComponent {
         this._authService.registerUser(this.username, this.password).subscribe(
             (result) => {
                 if (result){
+                    this.resetValues();
                     this.welcomeMessage = "Welcome " + result + "!, Login to continue";
                     this.login = true; 
-                    this.username = null;
-                    this.password = null;
                     this._router.navigate(['/auth']);
                 };
             },
