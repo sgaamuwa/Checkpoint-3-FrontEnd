@@ -1,89 +1,58 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-9"><input type="text" class="form-control" [(ngModel)]="newBucketlist"></div>
-        <div class="col-md-3"><button class="btn btn-primary" (click)='createBucketlist()'> Create Bucketlist </button></div> 
-    </div><br>
-    <div class="row" *ngIf="createBucketlistError">
-        <div class="col-md-9 alert alert-danger alert-xs">{{createBucketlistError.name[0]}}</div>
-    </div><br>
-    <div class="row">
-        <div class="">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-list"></span>Bucket Lists
-                    <div class="pull-right action-buttons">
-                        <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-info-sign" style="margin-right: 0px;"></span>
-                            </button>
-                            <ul class="dropdown-menu slidedown">
-                                <li><a ><span class="glyphicon glyphicon-trash"></span>Delete</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <ul class="list-group" *ngIf="bucketlists && bucketlists.length">
-                        <li class="list-group-item" *ngFor="let bucketlist of bucketlists; let i = index">
-                            <div class="bucketlist">
-                                <div ><a href="javascript:void(0)" [routerLink]="['/bucketlists', bucketlist.id]">{{bucketlist.name}}</a></div>
-                            </div>
-                            <div class="pull-right action-buttons">
-                                <a href="javascript:void(0)" data-toggle="modal" [attr.data-target]="'#DeleteModal' + i" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
-                            </div>
-                            <!-- Modal -->
-                            <div class = "modal fade" [id] = "'DeleteModal' + i" tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true"> 
-                                <div class = "modal-dialog">
-                                    <div class = "modal-content"> 
-                                        <div class = "modal-header">
-                                            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
-                                                &times;
-                                            </button>
-                                            <h4 class = "modal-title" id = "myModalLabel">
-                                            Delete Bucketlist
-                                            </h4>
-                                        </div>
-                                        <div class = "modal-body">
-                                            Are you sure you want to delete {{bucketlist.name}}??
-                                        </div>
-                                        <div class = "modal-footer">
-                                            <button type = "button" class = "btn btn-danger" (click)="deleteBucketlist(bucketlist.id)" data-dismiss = "modal">Yes</button>
-                                            <button type = "button" class = "btn btn-success" data-dismiss = "modal">No</button>
-                                        </div>
-                                    </div>
+<div class="row">
+    <div class="col-md-9"><input type="text" class="form-control" [(ngModel)]="newBucketlist"></div>
+    <div class="col-md-3"><button class="btn btn-primary" (click)='createBucketlist()'> Create Bucketlist </button></div> 
+</div><br>
+<div class="row" *ngIf="createBucketlistError">
+    <div class="col-md-9 alert alert-danger alert-xs">{{createBucketlistError.name[0]}}</div>
+</div><br>
+
+<div class="panel">
+    <div class="panel-heading">Your Bucketlists</div>
+    <div class="panel-body">
+        <div class="container" *ngIf="bucketlists && bucketlists.length">
+            <ul class="list-group">
+            <li class="list-group-item" *ngFor="let bucketlist of bucketlists; let i = index">
+                <a [routerLink]="['/bucketlists', bucketlist.id]">{{bucketlist.name}}</a><span class="pull-right"><button class="btn btn-danger pull-right" data-toggle="modal" [attr.data-target]="'#DeleteModal' + i">Delete</button></span>
+                <div class = "modal fade" [id] = "'DeleteModal' + i" tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true"> 
+                        <div class = "modal-dialog">
+                            <div class = "modal-content"> 
+                                <div class = "modal-header">
+                                    <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                                        &times;
+                                    </button>
+                                    <h4 class = "modal-title" id = "myModalLabel">
+                                    Delete Bucketlist
+                                    </h4>
+                                </div>
+                                <div class = "modal-body">
+                                    Are you sure you want to delete {{bucketlist.name}}??
+                                </div>
+                                <div class = "modal-footer">
+                                    <button type = "button" class = "btn btn-danger" (click)="deleteBucketlist(bucketlist.id)" data-dismiss = "modal">Yes</button>
+                                    <button type = "button" class = "btn btn-success" data-dismiss = "modal">No</button>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                    <p *ngIf="bucketlist && bucketlists.length==0"> You have no bucketlists, Create a new one</p>
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>
-                                Total Count <span class="label label-info">{{count}}</span></h6>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="pagination pagination-sm pull-right" >
-                                <li><a href="javascript:void(0)" (click)="getPreviousPage()" *ngIf="previousPage != null"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-                                <li><a href="javascript:void(0)" (click)="getNextPage()" *ngIf="nextPage != null"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                            </ul>
                         </div>
                     </div>
-                </div>
+                </li>
+            </ul>
+        </div>
+        <p *ngIf="bucketlists && bucketlists.length==0"> You have no bucketlists, Create a new one to get started</p>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <h6>
+                    Total Count <span class="label label-info">{{count}}</span></h6>
+            </div>
+            <div class="col-md-6">
+                <ul class="pagination pagination-sm pull-right" >
+                    <li><a (click)="getPreviousPage()" *ngIf="previousPage != null"><span class="fa fa-chevron-left"></span></a></li>
+                    <li><a (click)="getNextPage()" *ngIf="nextPage != null"><span class="fa fa-chevron-right"></span></a></li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header danger-color-dark white-text">
-        Featured
-    </div>
-    <div class="card-block">
-        <h4 class="card-title">Special title treatment</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a class="btn btn-danger">Go somewhere</a>
-    </div>
-</div>
 

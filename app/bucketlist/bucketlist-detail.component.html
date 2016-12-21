@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="col-sm-12 col-md-9">
+    <div class="col-sm-12 col-md-12">
         <div class="bs-calltoaction bs-calltoaction-info">
             <div class="row" *ngIf="bucketlist">
                 <div class="col-md-9 cta-contents">
-                    <h1 class="cta-title" *ngIf="!edit">{{bucketlist.name}}</h1>
+                    <h3 class="cta-title" *ngIf="!edit">{{bucketlist.name}}</h3>
                     <div *ngIf="updateBucketlistError" class="alert alert-danger">{{updateBucketlistError.name[0]}}</div>
                     <input type="text" class="form-control" [(ngModel)]="bucketlistName" *ngIf="edit">
                     <div class="cta-desc" >
@@ -41,7 +41,7 @@
 	<div class="row">
 		<div class="col-lg-12">
             <div class="row">
-                <div class="panel panel-primary">
+                <div class="panel">
                     <div class="panel-heading" style="display: in-line">
                         Items
                     </div>

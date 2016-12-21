@@ -5,5 +5,23 @@
 .panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; }
 .panel-body .radio, .bucketlist { display:inline-block;margin:0px; }
 .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
-.list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+.list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgba(82, 100, 174, .2);}
 .list-group { margin-bottom:0px; }
+.list-group-item{
+    background-color: rgba(255, 255, 255, .3);
+    margin-bottom: 0.2em;
+    font-size: 1.3em;
+    height: 5rem;
+}
+.panel{
+    background: transparent;
+}
+.panel-heading{
+    font-size: 1.5em;
+}
+.panel-footer{
+    background: transparent;
+}
+a {
+    color: rgb(0, 51, 102);
+}

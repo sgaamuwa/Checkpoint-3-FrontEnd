@@ -97,3 +97,20 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+
+.container {
+	width: 50%;
+}
+
+.welcome {
+	color: rgb(82, 100, 174);
+	padding-top: 6rem;
+	padding-bottom: 6rem;
+	text-align: center;
+	font-family: cursive;
+	font-size: 7rem;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
