@@ -16,6 +16,8 @@ export class AuthComponent {
     email: string;
     login: boolean = true;
     welcomeMessage: string;
+    usernameError: string;
+    passwordError: string;
     errorMessage: string;
 
     constructor(private _authService: AuthService, private _router: Router){
@@ -31,6 +33,7 @@ export class AuthComponent {
             },
             error => {
                 this.resetValues();
+                this.errorHandler(error);
                 this.errorMessage = <any>error;
             });
     }
@@ -45,7 +48,10 @@ export class AuthComponent {
                     this._router.navigate(['/auth']);
                 };
             },
-            error => this.errorMessage = <any>error);
+            error => {
+                this.errorHandler(error);
+                this.errorMessage = <any>error
+            });
     }
 
     onRegister(): void {
@@ -65,5 +71,24 @@ export class AuthComponent {
         this.email = null;
         this.errorMessage = null;
         this.welcomeMessage = null;
+    }
+
+    errorHandler(error: any ): void {
+        if(error.username){
+            if(error.username[0] == "This field may not be null."){
+                this.usernameError = "Please provide a Username"
+            }
+            else{
+                this.usernameError = error.username
+            }
+        }
+        if(error.password){
+            if(error.password[0] == ("This field may not be null." || "This field may not be blank.")){
+                this.passwordError = "Please provide a Password"
+            }
+            else{
+                this.passwordError = error.password
+            }
+        }
     }
 }

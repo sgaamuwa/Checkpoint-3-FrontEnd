@@ -27,6 +27,7 @@ var AuthComponent = (function () {
             ;
         }, function (error) {
             _this.resetValues();
+            _this.errorHandler(error);
             _this.errorMessage = error;
         });
     };
@@ -40,7 +41,10 @@ var AuthComponent = (function () {
                 _this._router.navigate(['/auth']);
             }
             ;
-        }, function (error) { return _this.errorMessage = error; });
+        }, function (error) {
+            _this.errorHandler(error);
+            _this.errorMessage = error;
+        });
     };
     AuthComponent.prototype.onRegister = function () {
         this.login = false;
@@ -57,6 +61,24 @@ var AuthComponent = (function () {
         this.email = null;
         this.errorMessage = null;
         this.welcomeMessage = null;
+    };
+    AuthComponent.prototype.errorHandler = function (error) {
+        if (error.username) {
+            if (error.username[0] == "This field may not be null.") {
+                this.usernameError = "Please provide a Username";
+            }
+            else {
+                this.usernameError = error.username;
+            }
+        }
+        if (error.password) {
+            if (error.password[0] == ("This field may not be null." || "This field may not be blank.")) {
+                this.passwordError = "Please provide a Password";
+            }
+            else {
+                this.passwordError = error.password;
+            }
+        }
     };
     AuthComponent = __decorate([
         core_1.Component({
