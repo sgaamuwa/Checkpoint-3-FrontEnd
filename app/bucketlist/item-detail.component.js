@@ -52,6 +52,10 @@ var ItemDetailComponent = (function () {
         __metadata('design:type', Number)
     ], ItemDetailComponent.prototype, "bucketlistId", void 0);
     __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], ItemDetailComponent.prototype, "i", void 0);
+    __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
     ], ItemDetailComponent.prototype, "itemUpdate", void 0);

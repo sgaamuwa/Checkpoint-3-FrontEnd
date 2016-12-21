@@ -44,16 +44,11 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="display: in-line">
                         Items
-                        <!--<div class="pull-right">
-                            <div *ngIf="createItemError" class="text-danger">{{createItemError.name[0]}}</div>
-                            <input type="text" [(ngModel)]="newItem"> 
-                            <button class="btn btn-primary" (click)='createItem(bucketlist.id)'>Create Item</button>
-                        </div>-->
                     </div>
                     <div class="panel-body">
                         <div *ngIf="bucketlist && bucketlist.items.length > 0">  
-                            <div class="well shadow-z-1" *ngFor="let item of bucketlist.items">
-                                <bl-itemDetail [item]="item" [bucketlistId]="bucketlist.id" (itemUpdate)="getBucketlist();"></bl-itemDetail>
+                            <div class="well shadow-z-1" *ngFor="let item of bucketlist.items; let i = index">
+                                <bl-itemDetail [item]="item" [bucketlistId]="bucketlist.id" [i]="i" (itemUpdate)="getBucketlist();"></bl-itemDetail>
                             </div>
                         </div>
                         <div *ngIf="bucketlist && bucketlist.items.length < 1">

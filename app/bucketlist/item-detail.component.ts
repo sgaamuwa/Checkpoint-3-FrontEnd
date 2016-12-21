@@ -10,6 +10,7 @@ import { BucketlistService } from './bucketlist.service';
 export class ItemDetailComponent implements OnInit{
     @Input() item: Item;
     @Input() bucketlistId: number;
+    @Input() i: number;
     @Output() itemUpdate = new EventEmitter();
     edit: boolean = false;
     isDone: boolean;
